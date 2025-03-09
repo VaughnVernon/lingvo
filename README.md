@@ -14,7 +14,7 @@ Create a pull request for each human language and programming language pair.
 ## Native Human Language Support
 Each human language is in a directory named by the ISO 639-1 standard. For example, Spanish is `es`, German is `de`, Italian is `it`, and French is `fr`.
 
-When proposing support for a currently unsupported language, look up and use the two-letter ISO 639-1 code to be used for the base directory. The codes can be found [here](https://en.m.wikipedia.org/wiki/List_of_ISO_639_language_codes).
+When proposing support for a currently unsupported language, look up and use the two-letter ISO 639-1 code for the base directory. The codes can be found [here](https://en.m.wikipedia.org/wiki/List_of_ISO_639_language_codes).
 
 Examples follow:
 
