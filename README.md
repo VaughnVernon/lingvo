@@ -8,7 +8,10 @@ This is inspired by the Domain-Driven Design _Ubiquitous Language_ within an exp
 # Goals
 This is an experimental effort. It would be gratifying to support many human languages and programming languages for every human language. A lot depends on the nuances of each human language, programming language, and the depth of understanding of each by those who submit keyword replacements and their substitutes.
 
-# Native Human Language Support
+# Guidelines
+Create a pull request for each human language and programming language pair.
+
+## Native Human Language Support
 Each human language is in a directory named by the ISO 639-1 standard. For example, Spanish is `es`, German is `de`, Italian is `it`, and French is `fr`.
 
 When proposing support for a currently unsupported language, look up and use the two-letter ISO 639-1 code to be used for the base directory. The codes can be found [here](https://en.m.wikipedia.org/wiki/List_of_ISO_639_language_codes).
@@ -49,9 +52,10 @@ lingvo/it/js
 
 Each programming language subdirectory will have a `README.md` that describes any oddities and other special considerations.
 
-# Guidelines
+## Examples
 Currently the best way to determine how to support human languages with any given programming language is to review an existing set of substitutes. The initial example is Spanish for Java: `lingvo/es/java`
 
+## Libraries
 It's best to create a library for each set of human-programming langage substitutes. For Java there is a Maven and/or Gradle build for `lingvo-es-java-1.0.0.jar`. It's anticipated that there will be one for C#: `lingvo-es-csharp-1.0.0.dll`.
 
 Eventually, the goal is to support standard distribution repositories such as Maven Central for JVM languages and NuGet for .NET languages.
