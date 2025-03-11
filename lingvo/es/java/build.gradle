@@ -9,7 +9,7 @@ java {
 }
 
 group = 'lingvo'
-description = 'Plantilla para un servicio Java'
+description = 'Use native langage in programming by replacing English keywords with functional substitutes.'
 
 compileJava {
     options.encoding = 'UTF-8'
