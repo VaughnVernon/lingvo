@@ -127,4 +127,8 @@ public final class Sentencia {
     public static <T> boolean estaVacio(final Optional<T> optional) {
         return optional.isEmpty();
     }
+
+    public static <T> boolean estaVacio(final Collection<T> collection) {
+        return collection.isEmpty();
+    }
 }

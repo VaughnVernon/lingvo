@@ -180,4 +180,22 @@ class SentenciaTest {
         assertFalse(actual);
     }
 
+    @Test
+    void coleccionVacia() {
+        List<Long> valores = List.of();
+
+        boolean actual = Sentencia.estaVacio(valores);
+
+        assertTrue(actual);
+    }
+
+    @Test
+    void colleccionNoVacia() {
+        List<Long> valores = List.of(1L, 2L, 3L);
+
+        boolean actual = Sentencia.estaVacio(valores);
+
+        assertFalse(actual);
+    }
+
 }
