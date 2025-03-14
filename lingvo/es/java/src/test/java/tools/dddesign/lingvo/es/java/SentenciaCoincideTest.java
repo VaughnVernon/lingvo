@@ -26,7 +26,7 @@ class SentenciaCoincideTest {
         coincide(variable)
                 .con("variable", resultado::incrementAndGet)
                 .con("otro valor", Assertions::fail)
-                .conSinTerminar("valor", Assertions::fail)
+                .conYContinua("valor", Assertions::fail)
                 .nones(Assertions::fail);
 
         //Then
@@ -34,12 +34,12 @@ class SentenciaCoincideTest {
     }
 
     @Test
-    void coincideConSinTerminarEjecutaNones() {
+    void coincideConYContinuaEjecutaNones() {
         AtomicLong resultado = new AtomicLong();
         String variable = "variable";
 
         coincide(variable)
-                .conSinTerminar("variable", resultado::incrementAndGet)
+                .conYContinua("variable", resultado::incrementAndGet)
                 .nones(resultado::incrementAndGet);
 
         assertEquals(2, resultado.get());
@@ -58,12 +58,12 @@ class SentenciaCoincideTest {
     }
 
     @Test
-    void noCoincideConSinTerminarEjecutaNones() {
+    void noCoincideConYContinuaEjecutaNones() {
         AtomicLong resultado = new AtomicLong();
         String variable = "variable";
 
         coincide(variable)
-                .conSinTerminar("no coincide", Assertions::fail)
+                .conYContinua("no coincide", Assertions::fail)
                 .nones(resultado::incrementAndGet);
 
         assertEquals(1, resultado.get());

@@ -46,7 +46,7 @@ public class SentenciaCoincide<T> {
         return new SentenciaCoincide<>(this.variable, ejecutado);
     }
 
-    public SentenciaCoincide<T> conSinTerminar(@Nonnull final T valor, @Nonnull final Runnable ejecutable) {
+    public SentenciaCoincide<T> conYContinua(@Nonnull final T valor, @Nonnull final Runnable ejecutable) {
         if (terminado) {
             return this;
         }
