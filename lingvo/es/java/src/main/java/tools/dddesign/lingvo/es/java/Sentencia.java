@@ -8,6 +8,7 @@ package tools.dddesign.lingvo.es.java;
 
 import jakarta.annotation.Nonnull;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.Optional;
@@ -137,5 +138,24 @@ public final class Sentencia {
             return optional.get();
         }
         throw new IllegalArgumentException("No existe el elemento");
+    }
+
+    public static <T> T nuevaInstancia(final Class<T> tipo, final Object...params) {
+        Class<?>[] tiposDeParametros = new Class[params.length];
+        int i = 0;
+        for (Object parametro : params) {
+            tiposDeParametros[i++] = parametro.getClass();
+        }
+        try {
+            Constructor<T> declaredConstructor = tipo.getDeclaredConstructor(tiposDeParametros);
+            declaredConstructor.setAccessible(true);
+            return declaredConstructor.newInstance(params);
+        } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+            String message = "No se ha podido instanciar el tipo " + tipo.getName() + ". ";
+            message += "Es probable que haga falta un constructor que reciba los parámetros indicados. " +
+                    "De momento no esta soportado unboxing. Es decir si el constructor recibe long (primitivo) " +
+                    "se le enviará un Long (Object), por lo que no existe ese constructor.";
+            throw new IllegalStateException(message, e);
+        }
     }
 }

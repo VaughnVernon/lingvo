@@ -9,6 +9,11 @@ package tools.dddesign.lingvo.es.java;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
@@ -214,6 +219,32 @@ class SentenciaTest {
         IllegalArgumentException actualEx = assertThrows(IllegalArgumentException.class, () -> Sentencia.obtener(optional));
 
         assertEquals("No existe el elemento",  actualEx.getMessage());
+    }
+
+    @Test
+    void nuevaInstancia() {
+        AtomicLong actualInstance = Sentencia.nuevaInstancia(AtomicLong.class);
+
+        assertNotNull(actualInstance);
+        assertEquals(0L, actualInstance.get());
+    }
+
+    @Test
+    void nuevaInstanciaConParametros() {
+        URI actualUri = Sentencia.nuevaInstancia(URI.class, "lingvo.ddd.com");
+
+        assertEquals(URI.class, actualUri.getClass());
+        assertEquals("lingvo.ddd.com", actualUri.toString());
+    }
+
+    @Test
+    void nuevaInstanciaConParametrosPrimitivosArrojaExcepcion() {
+        IllegalStateException actualEx = assertThrows(IllegalStateException.class, () -> Sentencia.nuevaInstancia(AtomicLong.class, 1L));
+
+        assertEquals("No se ha podido instanciar el tipo java.util.concurrent.atomic.AtomicLong. " +
+                "Es probable que haga falta un constructor que reciba los parámetros indicados. " +
+                "De momento no esta soportado unboxing. Es decir si el constructor recibe long (primitivo) " +
+                "se le enviará un Long (Object), por lo que no existe ese constructor.", actualEx.getMessage());
     }
 
 }

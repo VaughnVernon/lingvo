@@ -6,6 +6,8 @@
 // one at https://mozilla.org/MPL/2.0/.
 package tools.dddesign.lingvo.es.java.example.domain.model;
 
+import static tools.dddesign.lingvo.es.java.Sentencia.nuevaInstancia;
+
 public class RepresentanteLegal {
 
     private final RFC rfc;
@@ -17,7 +19,7 @@ public class RepresentanteLegal {
     }
 
     public static RepresentanteLegal con(final RFC rfc, final NombreCompleto nombreCompleto) {
-        return new RepresentanteLegal(rfc, nombreCompleto);
+        return nuevaInstancia(RepresentanteLegal.class, rfc, nombreCompleto);
     }
 
     public RFC rfc() {
