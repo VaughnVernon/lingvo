@@ -89,6 +89,55 @@ class SentenciaTest {
         assertEquals(2L, counter.get());
     }
 
+    @Test
+    void nueva() {
+        //Given
+        String mensaje = "La descripcion de la excepcion";
 
+        //When
+        IllegalArgumentException actual = Sentencia.nueva(IllegalArgumentException.class, mensaje);
+
+        //Then
+        assertEquals(mensaje, actual.getMessage());
+    }
+
+    @Test
+    void nuevaExcepcionSinContructorParaDescripcion() {
+        //Given
+        String mensaje = "La descripcion de la excepcion";
+
+        //When
+        IllegalStateException actualEx = assertThrows(IllegalStateException.class, () -> Sentencia.nueva(ExcepcionSinConstructorParaMensaje.class, mensaje));
+
+        assertEquals("No se ha podido instanciar la excepcion de tipo " +
+                "tools.dddesign.lingvo.es.java.ExcepcionSinConstructorParaMensaje. " +
+                "Es probable que haga falta un constructor que reciba el mensaje", actualEx.getMessage());
+    }
+
+    @Test
+    void nuevaExcepcionConMensajeYCausa() {
+        //Given
+        String mensaje = "La descripcion de la excepcion";
+        IllegalArgumentException cause = new IllegalArgumentException();
+
+        //When
+        RuntimeException actualEx = Sentencia.nueva(RuntimeException.class, mensaje, cause);
+
+        assertEquals(mensaje, actualEx.getMessage());
+        assertEquals(cause, actualEx.getCause());
+    }
+
+    @Test
+    void nuevaExcepcionSinConstructorParaMensajeYCausa() {
+        //Given
+        String mensaje = "La descripcion de la excepcion";
+
+        //When
+        IllegalStateException actualEx = assertThrows(IllegalStateException.class, () -> Sentencia.nueva(ExcepcionSinConstructorParaMensaje.class, mensaje, new IllegalArgumentException()));
+
+        assertEquals("No se ha podido instanciar la excepcion de tipo " +
+                "tools.dddesign.lingvo.es.java.ExcepcionSinConstructorParaMensaje. " +
+                "Es probable que haga falta un constructor que reciba el mensaje y la causa", actualEx.getMessage());
+    }
 
 }

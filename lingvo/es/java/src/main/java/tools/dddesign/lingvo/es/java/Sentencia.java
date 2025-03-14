@@ -10,9 +10,13 @@ import jakarta.annotation.Nonnull;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
+import java.util.Optional;
 import java.util.function.BooleanSupplier;
 import java.util.function.Consumer;
 
+/**
+ * Statements façade
+ */
 public final class Sentencia {
 
     private Sentencia() { }
@@ -102,6 +106,16 @@ public final class Sentencia {
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
             String message = "No se ha podido instanciar la excepcion de tipo " + tipoDeExcepcion.getName();
             message += ". Es probable que haga falta un constructor que reciba el mensaje";
+            throw new IllegalStateException(message, e);
+        }
+    }
+
+    public static <T extends RuntimeException> T nueva(final Class<T> tipoDeExcepcion, final String mensaje, final Throwable cause) {
+        try {
+            return tipoDeExcepcion.getDeclaredConstructor(String.class, Throwable.class).newInstance(mensaje, cause);
+        } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+            String message = "No se ha podido instanciar la excepcion de tipo " + tipoDeExcepcion.getName();
+            message += ". Es probable que haga falta un constructor que reciba el mensaje y la causa";
             throw new IllegalStateException(message, e);
         }
     }
