@@ -1,0 +1,46 @@
+plugins {
+    id 'java'
+    id 'idea'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+group = 'lingvo'
+description = 'Use native langage in programming by replacing English keywords with functional substitutes.'
+
+compileJava {
+    options.encoding = 'UTF-8'
+}
+compileTestJava {
+    options.encoding = 'UTF-8'
+}
+test {
+    useJUnitPlatform()
+}
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+    acceptanceTest {
+        java {
+            compileClasspath += main.output + test.output
+            runtimeClasspath += main.output + test.output
+            srcDir file('src/acceptance-test/java')
+        }
+        resources.srcDir file('src/acceptance-test/resources')
+    }
+}
+
+dependencies {
+    testImplementation('org.junit.jupiter:junit-jupiter-api:5.12.0')
+    testImplementation('org.junit.jupiter:junit-jupiter-engine:5.12.0')
+    testImplementation group: 'org.junit.platform', name: 'junit-platform-launcher', version: '1.9.2'
+
+    acceptanceTestImplementation('jakarta.annotation:jakarta.annotation-api:3.0.0')
+
+    implementation('jakarta.annotation:jakarta.annotation-api:3.0.0')
+}
