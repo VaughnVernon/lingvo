@@ -15,6 +15,8 @@ import tools.dddesign.lingvo.es.java.example.domain.repository.RepositorioDeCont
 import java.util.Optional;
 
 import static tools.dddesign.lingvo.es.java.Sentencia.arroja;
+import static tools.dddesign.lingvo.es.java.Sentencia.estaPresente;
+import static tools.dddesign.lingvo.es.java.Sentencia.estaVacio;
 import static tools.dddesign.lingvo.es.java.Sentencia.nueva;
 import static tools.dddesign.lingvo.es.java.Sentencia.si;
 
@@ -33,7 +35,7 @@ public class ServicioDeContribuyente {
     public DatosContribuyente registrarContribuyente(final String rfcRecibido) {
         RFC rfc = RFC.aPartirDe(rfcRecibido);
         Optional<Contribuyente> contribuyenteOpcional = repositorio.encontrarPorRfc(rfc);
-        si (contribuyenteOpcional.isPresent(), () ->
+        si (estaPresente(contribuyenteOpcional), () ->
             arroja(nueva(ExcepcionContribuyenteYaRegistrado.class,
                     "El contribuyente con RFC " + rfcRecibido + " ya se encuentra registrado."))
         );
@@ -52,7 +54,7 @@ public class ServicioDeContribuyente {
                                            final String segundoApellidoDelRepresentante) {
         RFC rfc = RFC.aPartirDe(rfcDelContribuyente);
         Optional<Contribuyente> contribuyenteOpcional = repositorio.encontrarPorRfc(rfc);
-        si (contribuyenteOpcional.isEmpty(), () ->
+        si (estaVacio(contribuyenteOpcional), () ->
                 arroja(nueva(ExcepcionContribuyenteNoEncontrado.class,
                         "No existe el contribuyente con RFC " + rfcDelContribuyente))
         );
@@ -60,7 +62,7 @@ public class ServicioDeContribuyente {
 
         RFC rfcRepresentante = RFC.aPartirDe(rfcDelRepresentante);
         Optional<Contribuyente> representanteLegal = repositorio.encontrarPorRfc(rfcRepresentante);
-        si (representanteLegal.isEmpty(), () ->
+        si (estaVacio(representanteLegal), () ->
                 arroja(nueva(ExcepcionContribuyenteNoEncontrado.class,
                         "No existe el representante legal con RFC " + rfcDelRepresentante))
         );

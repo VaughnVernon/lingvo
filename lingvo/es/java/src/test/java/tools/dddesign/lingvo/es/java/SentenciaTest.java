@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -138,6 +139,45 @@ class SentenciaTest {
         assertEquals("No se ha podido instanciar la excepcion de tipo " +
                 "tools.dddesign.lingvo.es.java.ExcepcionSinConstructorParaMensaje. " +
                 "Es probable que haga falta un constructor que reciba el mensaje y la causa", actualEx.getMessage());
+    }
+
+    @Test
+    void siEstaPresente() {
+        //Given
+        Optional<String> optional = Optional.of("");
+
+        //When
+        boolean actual = Sentencia.estaPresente(optional);
+
+        //Then
+        assertTrue(actual);
+    }
+
+    @Test
+    void noEstaPresente() {
+        Optional<String> optional = Optional.empty();
+
+        boolean actual = Sentencia.estaPresente(optional);
+
+        assertFalse(actual);
+    }
+
+    @Test
+    void siEstaVacio() {
+        Optional<String> optional = Optional.empty();
+
+        boolean actual = Sentencia.estaVacio(optional);
+
+        assertTrue(actual);
+    }
+
+    @Test
+    void noEstaVacio() {
+        Optional<String> optional = Optional.of("");
+
+        boolean actual = Sentencia.estaVacio(optional);
+
+        assertFalse(actual);
     }
 
 }

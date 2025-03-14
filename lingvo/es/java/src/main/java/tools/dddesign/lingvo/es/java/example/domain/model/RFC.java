@@ -75,11 +75,11 @@ public class RFC {
 
     public void asignaFechaDeNacimiento(final String rfc, final int indiceInicioFechaDeNacimiento) {
         int indice = indiceInicioFechaDeNacimiento;
-        int anio = extractNextTwoDigits(rfc, indice);
+        int anio = extraeLosSiguientesDosDigitos(rfc, indice);
         indice += TAMANIO_DIGITOS_PARA_FECHA;
-        int mes = extractNextTwoDigits(rfc, indice);
+        int mes = extraeLosSiguientesDosDigitos(rfc, indice);
         indice += TAMANIO_DIGITOS_PARA_FECHA;
-        int dia = extractNextTwoDigits(rfc, indice);
+        int dia = extraeLosSiguientesDosDigitos(rfc, indice);
 
         intenta(() ->
             this.fechaDeNacimiento = LocalDate.of(anio, mes, dia))
@@ -89,7 +89,7 @@ public class RFC {
         }).ahora();
     }
 
-    private int extractNextTwoDigits(final String rfc, final int index) {
+    private int extraeLosSiguientesDosDigitos(final String rfc, final int index) {
         String substring = rfc.substring(index, index + TAMANIO_DIGITOS_PARA_FECHA);
         si(noEsNumero(substring), () ->
             arroja(nueva(IllegalArgumentException.class, "El valor " + substring + " no es un número."))

@@ -119,4 +119,12 @@ public final class Sentencia {
             throw new IllegalStateException(message, e);
         }
     }
+
+    public static <T> boolean estaPresente(final Optional<T> optional) {
+        return optional.isPresent();
+    }
+
+    public static <T> boolean estaVacio(final Optional<T> optional) {
+        return optional.isEmpty();
+    }
 }
