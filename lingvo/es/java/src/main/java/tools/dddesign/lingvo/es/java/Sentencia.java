@@ -58,6 +58,12 @@ public final class Sentencia {
         }
     }
 
+    public static void bucle(final int inicio, int fin, final Consumer<Integer> accion) {
+        for (int i = inicio; i < fin; i++) {
+            accion.accept(i);
+        }
+    }
+
     /**
      * while - mientras
      * @param condicion

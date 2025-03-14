@@ -55,6 +55,17 @@ class SentenciaTest {
     }
 
     @Test
+    void bucleContador() {
+        int inicio = 0;
+        int fin = 10;
+        StringBuilder concatenador = new StringBuilder();
+
+        Sentencia.bucle(inicio, fin, i -> concatenador.append(i.toString()));
+
+        assertEquals("0123456789", concatenador.toString());
+    }
+
+    @Test
     void mientras() {
         AtomicLong counter = new AtomicLong();
 
