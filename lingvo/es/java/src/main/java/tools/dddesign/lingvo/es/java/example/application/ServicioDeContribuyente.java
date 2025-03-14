@@ -18,6 +18,7 @@ import static tools.dddesign.lingvo.es.java.Sentencia.arroja;
 import static tools.dddesign.lingvo.es.java.Sentencia.estaPresente;
 import static tools.dddesign.lingvo.es.java.Sentencia.estaVacio;
 import static tools.dddesign.lingvo.es.java.Sentencia.nueva;
+import static tools.dddesign.lingvo.es.java.Sentencia.obtener;
 import static tools.dddesign.lingvo.es.java.Sentencia.si;
 
 /**
@@ -58,7 +59,7 @@ public class ServicioDeContribuyente {
                 arroja(nueva(ExcepcionContribuyenteNoEncontrado.class,
                         "No existe el contribuyente con RFC " + rfcDelContribuyente))
         );
-        Contribuyente contribuyente = contribuyenteOpcional.get();
+        Contribuyente contribuyente = obtener(contribuyenteOpcional);
 
         RFC rfcRepresentante = RFC.aPartirDe(rfcDelRepresentante);
         Optional<Contribuyente> representanteLegal = repositorio.encontrarPorRfc(rfcRepresentante);

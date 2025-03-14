@@ -198,4 +198,22 @@ class SentenciaTest {
         assertFalse(actual);
     }
 
+    @Test
+    void obtener() {
+        Optional<String> optional = Optional.of("");
+
+        String actual = Sentencia.obtener(optional);
+
+        assertEquals("", actual);
+    }
+
+    @Test
+    void obtenerDeUnOpcionalVacioArrojaExcepcion() {
+        Optional<String> optional = Optional.empty();
+
+        IllegalArgumentException actualEx = assertThrows(IllegalArgumentException.class, () -> Sentencia.obtener(optional));
+
+        assertEquals("No existe el elemento",  actualEx.getMessage());
+    }
+
 }

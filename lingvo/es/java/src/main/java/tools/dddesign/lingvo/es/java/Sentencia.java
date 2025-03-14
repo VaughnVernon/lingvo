@@ -131,4 +131,11 @@ public final class Sentencia {
     public static <T> boolean estaVacio(final Collection<T> collection) {
         return collection.isEmpty();
     }
+
+    public static <T> T obtener(final Optional<T> optional) {
+        if (optional.isPresent()) {
+            return optional.get();
+        }
+        throw new IllegalArgumentException("No existe el elemento");
+    }
 }
