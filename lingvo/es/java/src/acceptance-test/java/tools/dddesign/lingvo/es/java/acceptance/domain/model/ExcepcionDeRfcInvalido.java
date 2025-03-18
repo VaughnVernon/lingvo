@@ -4,14 +4,14 @@
 // Mozilla Public License, v. 2.0. If a copy of the MPL
 // was not distributed with this file, You can obtain
 // one at https://mozilla.org/MPL/2.0/.
-package tools.dddesign.lingvo.es.java.example.application;
+package tools.dddesign.lingvo.es.java.acceptance.domain.model;
 
 /**
- * Tax payer not found
+ * Equivalent to Invalid Tax Payer ID
  */
-public class ExcepcionContribuyenteNoEncontrado extends RuntimeException {
+public class ExcepcionDeRfcInvalido extends RuntimeException {
 
-    public ExcepcionContribuyenteNoEncontrado(final String message) {
+    public ExcepcionDeRfcInvalido(final String message) {
         super(message);
     }
 }

@@ -4,10 +4,10 @@
 // Mozilla Public License, v. 2.0. If a copy of the MPL
 // was not distributed with this file, You can obtain
 // one at https://mozilla.org/MPL/2.0/.
-package tools.dddesign.lingvo.es.java.example.domain.repository;
+package tools.dddesign.lingvo.es.java.acceptance.domain.repository;
 
-import tools.dddesign.lingvo.es.java.example.domain.model.Contribuyente;
-import tools.dddesign.lingvo.es.java.example.domain.model.RFC;
+import tools.dddesign.lingvo.es.java.acceptance.domain.model.Contribuyente;
+import tools.dddesign.lingvo.es.java.acceptance.domain.model.RFC;
 
 import java.util.Optional;
 
