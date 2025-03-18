@@ -3,6 +3,8 @@ Use native language in programming by replacing English keywords with functional
 
 The word **_lingvo_** is Esperanto for "language," which is representative of the effort to provide support for a broad range of human and programming languages.
 
+![English to Esperanto: language -> lingvo](language-lingvo.png "LINGVO")
+
 This is inspired by the Domain-Driven Design _Ubiquitous Language_ within an explicit _Bounded Context._ You can't program effectively in a non-English native langage while mixing in English keywords.
 
 # Goals
