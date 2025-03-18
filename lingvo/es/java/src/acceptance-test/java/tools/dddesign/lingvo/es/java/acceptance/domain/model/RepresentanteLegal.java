@@ -6,7 +6,10 @@
 // one at https://mozilla.org/MPL/2.0/.
 package tools.dddesign.lingvo.es.java.acceptance.domain.model;
 
+import static tools.dddesign.lingvo.es.java.Sentencia.arroja;
+import static tools.dddesign.lingvo.es.java.Sentencia.nueva;
 import static tools.dddesign.lingvo.es.java.Sentencia.nuevaInstancia;
+import static tools.dddesign.lingvo.es.java.Sentencia.si;
 
 public class RepresentanteLegal {
 
@@ -19,6 +22,9 @@ public class RepresentanteLegal {
     }
 
     public static RepresentanteLegal con(final RFC rfc, final NombreCompleto nombreCompleto) {
+        si(rfc.tipoDePersona() != TipoDePersona.FISICA, () ->
+                arroja(nueva(ExcepcionTipoPersonaInvalido.class, "El representante legal debe ser una persona física")));
+
         return nuevaInstancia(RepresentanteLegal.class, rfc, nombreCompleto);
     }
 
