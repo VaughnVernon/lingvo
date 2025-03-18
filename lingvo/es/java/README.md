@@ -58,7 +58,7 @@ class Contribuyente {
 
 Licencia Mozilla Pública 2.0 - © 2024-2025 Vaughn Vernon y Gustavo Vargas.
 
-## Shoutouts
+## Agradecimientos
 
 Creado por Gustavo Vargas (@gusvmx) con la guía de Vaughn Vernon (@VaughnVernon). ¡Gracias por inspirar este viaje!
 
