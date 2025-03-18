@@ -1,5 +1,5 @@
 # lingvo
-Use native langage in programming by replacing English keywords with functional substitutes.
+Use native language in programming by replacing English keywords with functional substitutes.
 
 The word **_lingvo_** is Esperanto for "language," which is representative of the effort to provide support for a broad range of human and programming languages.
 
